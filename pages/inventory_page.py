@@ -2,7 +2,7 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
 class InventoryPage(BasePage):
-    ADD_TO_CART_BUTTON  = (By.ID, "addd-to-cart-sauce-labs-backpack")
+    ADD_TO_CART_BUTTON  = (By.ID, "add-to-cart-sauce-labs-backpack")
     CART_BADGE = (By.CSS_SELECTOR, ".shopping_cart_badge")
 
     def __init__(self, driver):

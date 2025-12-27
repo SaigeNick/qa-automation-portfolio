@@ -4,11 +4,18 @@ import allure
 from datetime import datetime
 from selenium import webdriver
 from pages.login_page import LoginPage
+from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture
 def driver(request):
-    my_driver = webdriver.Chrome()
-    request.node.driver = my_driver
+    options = Options()
+    options.add_argument("--headless")  # Запуск без вікна (важливо для сервера!)
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")  # Імітуємо Full HD екран
+
+    print("\nStarting Chrome Driver (Headless)")
+    my_driver = webdriver.Chrome(options=options)
     yield my_driver
     my_driver.quit()
 
